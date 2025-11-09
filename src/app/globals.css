@@ -1,10 +1,10 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
 body {
-  font-family: "Satoshi", sans-serif;
+  font-family: 'Satoshi', sans-serif;
 }
 
 @theme inline {
@@ -37,43 +37,44 @@ body {
 
 :root {
   --radius: 0.5rem;
-  --background: #e0f2f7; /* Very light blue */
-  --foreground: #1f2937; /* Dark gray */
-  --card: #e0f2f7; /* Very light blue */
-  --card-foreground: #1f2937; /* Dark gray */
-  --popover: #e0f2f7; /* Very light blue */
-  --primary: #2196f3; /* Blue */
-  --primary-foreground: #1f2937; /* Dark gray */
-  --secondary: #a7d9ed; /* Light blue */
-  --secondary-foreground: #1f2937; /* Dark gray */
-  --muted: #a7d9ed; /* Light blue */
-  --muted-foreground: #6b7280; /* Gray */
-  --accent: #a7d9ed; /* Light blue */
-  --accent-foreground: #1f2937; /* Dark gray */
-  --destructive: #ef4444; /* Red */
+  --background: #f8f8f8; /* Off-white */
+  --foreground: #333333; /* Dark gray */
+  --card: #ffffff; /* White */
+  --card-foreground: #333333; /* Dark gray */
+  --popover: #ffffff; /* White */
+  --popover-foreground: #333333; /* Dark gray */
+  --primary: #6b7280; /* Medium gray - subtle accent */
+  --primary-foreground: #ffffff; /* White */
+  --secondary: #e5e7eb; /* Light gray */
+  --secondary-foreground: #333333; /* Dark gray */
+  --muted: #e5e7eb; /* Light gray */
+  --muted-foreground: #6b7280; /* Medium gray */
+  --accent: #e5e7eb; /* Light gray */
+  --accent-foreground: #333333; /* Dark gray */
+  --destructive: #dc2626; /* Standard red */
   --border: oklch(0 0 0 / 0.09);
-  --ring: #2196f3; /* Blue */
+  --ring: #9ca3af; /* Medium gray */
 }
 
 .dark {
-  --background: #1f2937; /* Dark gray */
-  --foreground: #e0f2f7; /* Very light blue */
-  --card: #1f2937; /* Dark gray */
-  --card-foreground: #e0f2f7; /* Very light blue */
-  --popover: #1f2937; /* Dark gray */
-  --popover-foreground: #e0f2f7; /* Very light blue */
-  --primary: #2196f3; /* Blue */
-  --primary-foreground: #1f2937; /* Dark gray */
+  --background: #1a1a1a; /* Very dark gray */
+  --foreground: #ffffff; /* Pure white */
+  --card: #2a2a2a; /* Dark gray */
+  --card-foreground: #f8f8f8; /* Off-white */
+  --popover: #2a2a2a; /* Dark gray */
+  --popover-foreground: #f8f8f8; /* Off-white */
+  --primary: #9ca3af; /* Medium gray - subtle accent */
+  --primary-foreground: #000000; /* Pure black */
   --secondary: #4b5563; /* Gray */
-  --secondary-foreground: #e0f2f7; /* Very light blue */
+  --secondary-foreground: #f8f8f8; /* Off-white */
   --muted: #4b5563; /* Gray */
-  --muted-foreground: #d1d5db; /* Light gray */
+  --muted-foreground: #a0a0a0; /* Lighter gray */
   --accent: #4b5563; /* Gray */
-  --accent-foreground: #e0f2f7; /* Very light blue */
-  --destructive: #ef4444; /* Red */
-  --border: oklch(1 1 1 / 0.1);
-  --input: oklch(1 1 1 / 0.1);
-  --ring: #2196f3; /* Blue */
+  --accent-foreground: #f8f8f8; /* Off-white */
+  --destructive: #ef4444; /* Standard red */
+  --border: #3a3a3a;
+  --input:#3a3a3a;
+  --ring: #9ca3af; /* Medium gray */
 }
 
 @layer base {
