@@ -64,11 +64,11 @@ body {
   --popover: #2a2a2a; /* Dark gray */
   --popover-foreground: #f8f8f8; /* Off-white */
   --primary: #9ca3af; /* Medium gray - subtle accent */
-  --primary-foreground: #000000; /* Pure black */
+  --primary-foreground: #e0e0e0; /* Lighter gray for better contrast */
   --secondary: #4b5563; /* Gray */
   --secondary-foreground: #f8f8f8; /* Off-white */
   --muted: #4b5563; /* Gray */
-  --muted-foreground: #a0a0a0; /* Lighter gray */
+  --muted-foreground: #c0c0c0; /* Lighter gray */
   --accent: #4b5563; /* Gray */
   --accent-foreground: #f8f8f8; /* Off-white */
   --destructive: #ef4444; /* Standard red */
