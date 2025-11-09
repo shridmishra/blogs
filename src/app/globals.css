@@ -3,6 +3,10 @@
 
 @custom-variant dark (&:is(.dark *));
 
+body {
+  font-family: "Satoshi", sans-serif;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -33,45 +37,43 @@
 
 :root {
   --radius: 0.5rem;
-  --background: #fefce8; /* Light yellow */
+  --background: #e0f2f7; /* Very light blue */
   --foreground: #1f2937; /* Dark gray */
-  --card: #fefce8; /* Light yellow */
+  --card: #e0f2f7; /* Very light blue */
   --card-foreground: #1f2937; /* Dark gray */
-  --popover: #fefce8; /* Light yellow */
-  --popover-foreground: #1f2937; /* Dark gray */
-  --primary: #f59e0b; /* Amber */
+  --popover: #e0f2f7; /* Very light blue */
+  --primary: #2196f3; /* Blue */
   --primary-foreground: #1f2937; /* Dark gray */
-  --secondary: #fde68a; /* Lighter yellow */
+  --secondary: #a7d9ed; /* Light blue */
   --secondary-foreground: #1f2937; /* Dark gray */
-  --muted: #fde68a; /* Lighter yellow */
+  --muted: #a7d9ed; /* Light blue */
   --muted-foreground: #6b7280; /* Gray */
-  --accent: #fde68a; /* Lighter yellow */
+  --accent: #a7d9ed; /* Light blue */
   --accent-foreground: #1f2937; /* Dark gray */
   --destructive: #ef4444; /* Red */
   --border: oklch(0 0 0 / 0.09);
-  --input: oklch(0 0 0 / 0.09);
-  --ring: #f59e0b; /* Amber */
+  --ring: #2196f3; /* Blue */
 }
 
 .dark {
   --background: #1f2937; /* Dark gray */
-  --foreground: #fefce8; /* Light yellow */
+  --foreground: #e0f2f7; /* Very light blue */
   --card: #1f2937; /* Dark gray */
-  --card-foreground: #fefce8; /* Light yellow */
+  --card-foreground: #e0f2f7; /* Very light blue */
   --popover: #1f2937; /* Dark gray */
-  --popover-foreground: #fefce8; /* Light yellow */
-  --primary: #f59e0b; /* Amber */
+  --popover-foreground: #e0f2f7; /* Very light blue */
+  --primary: #2196f3; /* Blue */
   --primary-foreground: #1f2937; /* Dark gray */
   --secondary: #4b5563; /* Gray */
-  --secondary-foreground: #fefce8; /* Light yellow */
+  --secondary-foreground: #e0f2f7; /* Very light blue */
   --muted: #4b5563; /* Gray */
   --muted-foreground: #d1d5db; /* Light gray */
   --accent: #4b5563; /* Gray */
-  --accent-foreground: #fefce8; /* Light yellow */
+  --accent-foreground: #e0f2f7; /* Very light blue */
   --destructive: #ef4444; /* Red */
   --border: oklch(1 1 1 / 0.1);
   --input: oklch(1 1 1 / 0.1);
-  --ring: #f59e0b; /* Amber */
+  --ring: #2196f3; /* Blue */
 }
 
 @layer base {
