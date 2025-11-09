@@ -4,12 +4,15 @@ import { useState, useEffect } from 'react'
 import { Post } from '@/lib/content'
 import { PostCard } from '@/components/PostCard'
 import Fuse from 'fuse.js'
+import useDebounce from '@/lib/hooks/useDebounce' // Import useDebounce
 
 export default function SearchPage() {
   const [allPosts, setAllPosts] = useState<Post[]>([])
   const [query, setQuery] = useState('')
   const [results, setResults] = useState<Post[]>([])
   const [fuse, setFuse] = useState<Fuse<Post> | null>(null)
+
+  const debouncedQuery = useDebounce(query, 500) // Debounce the query with a 500ms delay
 
   useEffect(() => {
     async function loadPosts() {
@@ -28,13 +31,17 @@ export default function SearchPage() {
   }, [])
 
   useEffect(() => {
-    if (fuse && query) {
-      const searchResults = fuse.search(query)
-      setResults(searchResults.map((result) => result.item))
+    if (fuse && debouncedQuery) {
+      const searchResults = fuse.search(debouncedQuery)
+      setTimeout(() => {
+        setResults(searchResults.map((result) => result.item))
+      }, 0)
     } else {
-      setResults([])
+      setTimeout(() => {
+        setResults([])
+      }, 0)
     }
-  }, [query, fuse])
+  }, [debouncedQuery, fuse])
 
   return (
     <div className="py-8">
@@ -54,7 +61,7 @@ export default function SearchPage() {
           </h2>
         )}
         {query && results.length === 0 && (
-            <p>No results found for "{query}".</p>
+            <p>No results found for &quot;{query}&quot;.</p>
         )}
         {results.map((post) => (
           <PostCard key={post.slug} post={post} />

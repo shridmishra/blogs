@@ -17,7 +17,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: TagPageProps) {
-  const tag = decodeURIComponent(params.tag)
+  const awaitedParams = await params
+  const tag = decodeURIComponent(awaitedParams.tag)
   return {
     title: `Posts tagged with "${tag}"`,
   }
@@ -25,7 +26,8 @@ export async function generateMetadata({ params }: TagPageProps) {
 
 export default async function TagPage({ params }: TagPageProps) {
   const allPosts = await getAllPosts()
-  const tag = decodeURIComponent(params.tag)
+  const awaitedParams = await params
+  const tag = decodeURIComponent(awaitedParams.tag)
   const taggedPosts = allPosts.filter((post) => post.tags.includes(tag))
 
   if (taggedPosts.length === 0) {
@@ -35,7 +37,7 @@ export default async function TagPage({ params }: TagPageProps) {
   return (
     <div className="py-8">
       <h1 className="text-3xl font-bold mb-8">
-        Posts tagged with "{tag}"
+        Posts tagged with &quot;{tag}&quot;
       </h1>
       <div>
         {taggedPosts.map((post) => (
