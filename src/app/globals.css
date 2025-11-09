@@ -58,7 +58,7 @@ body {
 
 .dark {
   --background: #1a1a1a; /* Very dark gray */
-  --foreground: #ffffff; /* Pure white */
+  --foreground: #f0f0f0; /* Slightly off-white */
   --card: #2a2a2a; /* Dark gray */
   --card-foreground: #f8f8f8; /* Off-white */
   --popover: #2a2a2a; /* Dark gray */
@@ -68,7 +68,7 @@ body {
   --secondary: #4b5563; /* Gray */
   --secondary-foreground: #f8f8f8; /* Off-white */
   --muted: #4b5563; /* Gray */
-  --muted-foreground: #c0c0c0; /* Lighter gray */
+  --muted-foreground: #999999; /* Darker gray */
   --accent: #4b5563; /* Gray */
   --accent-foreground: #f8f8f8; /* Off-white */
   --destructive: #ef4444; /* Standard red */
