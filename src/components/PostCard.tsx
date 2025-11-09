@@ -10,7 +10,7 @@ export function PostCard({ post }: PostCardProps) {
   return (
     <article className="pb-10 border-b border-border last:border-b-0">
       <h2 className="text-3xl font-bold leading-tight mb-2">
-        <Link href={`/post/${post.slug}`} className="hover:text-primary-foreground transition-colors duration-200">
+        <Link href={`/post/${post.slug}`} className="hover:text-muted-foreground transition-colors duration-200">
           {post.title}
         </Link>
       </h2>
@@ -34,7 +34,7 @@ export function PostCard({ post }: PostCardProps) {
           <Link
             key={tag}
             href={`/tag/${tag}`}
-            className="text-xs font-medium px-3 py-1 rounded-full bg-muted text-muted-foreground hover:bg-muted-foreground transition-colors duration-200"
+            className="text-xs font-medium px-3 py-1 rounded-full bg-muted text-muted-foreground hover:bg-foreground hover:text-primary-foreground transition-colors duration-200"
           >
             {tag}
           </Link>

@@ -5,7 +5,7 @@ export function Footer() {
 
   return (
     <footer className="py-8 mt-16 border-t border-border">
-      <div className="container mx-auto flex items-center justify-center">
+      <div className="container mx-auto flex items-center justify-center max-w-4xl">
         <p className="text-muted-foreground">&copy; {currentYear} Blogs</p>
         <div className="flex items-center space-x-4">
           <Link href="/about" className="text-muted-foreground hover:text-foreground">

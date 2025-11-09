@@ -29,7 +29,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="flex flex-col min-h-screen">
             <Header />
-            <main className="grow container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl pt-24">
+            <main className="grow container mx-auto max-w-4xl pt-24">
               {children}
             </main>
             <Footer />

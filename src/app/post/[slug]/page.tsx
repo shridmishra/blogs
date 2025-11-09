@@ -35,8 +35,8 @@ export default async function PostPage({ params }: PostPageProps) {
   return (
     <>
       <ReadingProgressBar />
-      <main className="container mx-auto px-4 py-8 max-w-3xl">
-        <article>
+      <main className="container mx-auto py-8 max-w-4xl">
+        <article className="px-6">
           <h1 className="text-4xl md:text-5xl font-extrabold leading-tight mb-4 text-center">{post.title}</h1>
           <div className="flex items-center justify-center space-x-4 mb-8 text-sm text-gray-500">
             <div className="flex items-center space-x-1">
