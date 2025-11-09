@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Blogs
+
+This is a minimalist blog application built with Next.js, TypeScript, and Tailwind CSS. It is designed to be a clean, typography-focused platform for reading and writing.
+
+## Features
+
+*   **Pure Black & White Theme**: A minimalist, Medium-like design with a focus on readability.
+*   **Light/Dark Mode**: Toggle between light and dark themes.
+*   **MDX Content**: Posts are written in MDX, allowing for rich content with components.
+*   **Content Layer**: A typed content layer provides strongly typed post metadata.
+*   **Core Blog Pages**: Home feed, post pages, author pages, and tag pages.
+*   **Client-Side Search**: Fuzzy search over post titles, excerpts, and tags.
+*   **RSS Feed & Sitemap**: An RSS feed is available at `/rss.xml` and a sitemap at `/sitemap.xml`.
+*   **Reading Progress Bar**: A progress bar indicates how far you've scrolled through a post.
+*   **Copy Link**: Easily copy the link to a post.
+
+## Tech Stack
+
+*   [Next.js](https://nextjs.org/) (App Router)
+*   [TypeScript](https://www.typescriptlang.org/)
+*   [Tailwind CSS](https://tailwindcss.com/)
+*   [shadcn/ui](https://ui.shadcn.com/)
+*   [React Icons](https://react-icons.github.io/react-icons/)
+*   [MDX](https://mdxjs.com/)
+*   [Fuse.js](https://fusejs.io/) for fuzzy search
+*   [RSS](https://www.npmjs.com/package/rss) for RSS feed generation
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+*   [Node.js](https://nodejs.org/en/) (v18 or later)
+*   [pnpm](https://pnpm.io/)
+
+### Installation
+
+1.  **Clone the repository:**
+
+    ```bash
+    git clone https://github.com/your-username/blogs.git
+    cd blogs
+    ```
+
+2.  **Install dependencies:**
+
+    ```bash
+    pnpm install
+    ```
+
+3.  **Run the development server:**
+
+    ```bash
+    pnpm dev
+    ```
+
+The application will be available at [http://localhost:3000](http://localhost:3000).
+
+### Adding New Components with shadcn/ui
+
+This project uses [shadcn/ui](https://ui.shadcn.com/) for its components. To add a new component, you can use the `shadcn` CLI:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npx shadcn@latest add [component-name]
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+For example, to add an `alert-dialog`:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npx shadcn@latest add alert-dialog
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This will add the component files to `src/components/ui`.
 
-## Learn More
+## Content
 
-To learn more about Next.js, take a look at the following resources:
+Blog posts are stored as MDX files in the `content/posts` directory. Each post has frontmatter that defines its metadata:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```yaml
+---
+title: 'My First Post'
+slug: 'first-post'
+date: '2025-11-09'
+updated: '2025-11-09'
+author: 'jane-doe'
+tags: ['nextjs', 'typescript', 'tailwind']
+excerpt: 'This is the excerpt for my first post. It is a short summary of the content.'
+draft: false
+---
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Author information is stored in `content/authors.ts`.
 
-## Deploy on Vercel
+## Building for Production
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To create a production build, run:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+pnpm build
+```
+
+And to start the production server:
+
+```bash
+pnpm start
+```# blogs
