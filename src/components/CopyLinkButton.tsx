@@ -1,15 +1,11 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { FiCopy, FiCheck } from 'react-icons/fi'
 
 export function CopyLinkButton() {
   const [isCopied, setIsCopied] = useState(false)
-  const [url, setUrl] = useState('')
-
-  useEffect(() => {
-    setUrl(window.location.href)
-  }, [])
+  const [url] = useState(() => typeof window !== 'undefined' ? window.location.href : '');
 
   const handleCopy = async () => {
     try {

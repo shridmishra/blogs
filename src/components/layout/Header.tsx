@@ -4,7 +4,7 @@ import { ThemeToggle } from '@/components/ThemeToggle'
 
 export function Header() {
   return (
-    <header className="py-4">
+    <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-4xl bg-background/50 backdrop-blur-md rounded-xl border border-border py-3 px-6">
       <div className="container mx-auto flex items-center justify-between">
         <Link href="/" className="text-2xl font-bold">
           Blogs
