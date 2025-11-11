@@ -5,6 +5,7 @@ import { Post } from '@/lib/content'
 import { PostCard } from '@/components/PostCard'
 import Fuse from 'fuse.js'
 import useDebounce from '@/lib/hooks/useDebounce' // Import useDebounce
+import { Input } from '@/components/ui/input'
 
 export default function SearchPage() {
   const [allPosts, setAllPosts] = useState<Post[]>([])
@@ -46,12 +47,12 @@ export default function SearchPage() {
   return (
     <div className="py-8">
       <h1 className="text-3xl font-bold mb-8">Search</h1>
-      <input
+      <Input
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search for posts..."
-        className="w-full p-2 border border-border rounded-md bg-input"
+        className="w-full"
       />
 
       <div className="mt-8">

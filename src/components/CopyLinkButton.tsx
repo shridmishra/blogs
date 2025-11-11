@@ -1,7 +1,15 @@
 'use client'
 
 import { useState } from 'react'
-import { FiCopy, FiCheck } from 'react-icons/fi'
+import { Copy, Check } from 'lucide-react'
+
+import { Button } from '@/components/ui/button'
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip'
 
 export function CopyLinkButton() {
   const [isCopied, setIsCopied] = useState(false)
@@ -18,21 +26,26 @@ export function CopyLinkButton() {
   }
 
   return (
-    <button
-      onClick={handleCopy}
-      className="flex items-center space-x-2 text-muted-foreground hover:text-foreground"
-    >
-      {isCopied ? (
-        <>
-          <FiCheck className="h-4 w-4" />
-          <span>Copied!</span>
-        </>
-      ) : (
-        <>
-          <FiCopy className="h-4 w-4" />
-          <span>Copy link</span>
-        </>
-      )}
-    </button>
+    <TooltipProvider>
+      <Tooltip open={isCopied} onOpenChange={setIsCopied}>
+        <TooltipTrigger asChild>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={handleCopy}
+            className="text-muted-foreground hover:text-foreground"
+          >
+            {isCopied ? (
+              <Check className="h-4 w-4" />
+            ) : (
+              <Copy className="h-4 w-4" />
+            )}
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          {isCopied ? 'Copied!' : 'Copy link'}
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
   )
 }

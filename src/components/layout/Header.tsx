@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { FiSearch } from 'react-icons/fi'
+import { Search } from 'lucide-react'
 import { ThemeToggle } from '@/components/ThemeToggle'
 
 export function Header() {
@@ -11,7 +11,7 @@ export function Header() {
         </Link>
         <nav className="flex items-center space-x-4">
           <Link href="/search">
-            <FiSearch className="h-6 w-6" />
+            <Search className="h-6 w-6" />
           </Link>
           <ThemeToggle />
         </nav>

@@ -41,7 +41,7 @@ export async function getPostBySlug(slug: string): Promise<Post> {
     date: format(new Date(data.date), 'MMMM d, yyyy'),
     updated: data.updated ? format(new Date(data.updated), 'MMMM d, yyyy') : undefined,
     author: postAuthor,
-    tags: data.tags,
+    tags: (data.tags || []) as string[],
     excerpt: data.excerpt,
     draft: data.draft || false,
     content,
