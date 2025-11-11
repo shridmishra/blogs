@@ -37,7 +37,6 @@ export async function POST(request: Request) {
 
     // 3. Construct MDX content with frontmatter
     const date = new Date().toISOString().split('T')[0] // YYYY-MM-DD
-    const authorName = authors[author].name
 
     const mdxContent = `---
 title: "${title}"
@@ -53,8 +52,8 @@ ${markdownContent}
     await fs.writeFile(filePath, mdxContent, 'utf8')
 
     return NextResponse.json({ message: 'Post created successfully', slug }, { status: 201 })
-  } catch (error) {
-    console.error('Error creating post:', error)
+  } catch {
+    console.error('Error creating post:')
     return NextResponse.json({ message: 'Internal server error' }, { status: 500 })
   }
 }

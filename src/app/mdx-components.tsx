@@ -1,5 +1,6 @@
 import type { MDXComponents } from 'mdx/types'
 import { Separator } from '../components/ui/separator'
+import Image from 'next/image'
 
 export const mdxComponents: MDXComponents = {
   h1: ({ ...props }) => (
@@ -59,10 +60,19 @@ export const mdxComponents: MDXComponents = {
   ),
   img: ({
     alt,
+    width,
+    height,
+    src,
     ...props
   }: React.ImgHTMLAttributes<HTMLImageElement>) => (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img className="rounded-md border" alt={alt} {...props} />
+    <Image
+      className="rounded-md border"
+      alt={alt || ''}
+      width={Number(width || 700)}
+      height={Number(height || 400)}
+      src={src as string || ''}
+      {...props}
+    />
   ),
   hr: ({ ...props }) => <Separator className="my-4 md:my-8" {...props} />,
   table: ({ ...props }: React.HTMLAttributes<HTMLTableElement>) => (
@@ -100,6 +110,4 @@ export const mdxComponents: MDXComponents = {
       {...props}
     />
   ),
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Image: (props: any) => <img {...props} />,
 }

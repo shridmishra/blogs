@@ -15,6 +15,12 @@ export const authors: Record<string, Author> = {
     handle: 'john-doe',
     name: 'John Doe',
     bio: 'John Doe is a full-stack engineer who loves building scalable web applications with Next.js.',
-    avatar: '/avatars/john-doe.png', // Example with an avatar
+  },
+
+  'shridmishra': {
+    handle: 'shridmishra',
+    name: 'Shrid Mishra',
+    bio: 'I am Batman',
+    
   },
 };

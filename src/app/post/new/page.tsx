@@ -2,7 +2,6 @@
 
 import { useRouter } from 'next/navigation'
 import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
 import RichTextEditor from '@/components/ui/RichTextEditor'
 import { Button } from '@/components/ui/button'
 import {

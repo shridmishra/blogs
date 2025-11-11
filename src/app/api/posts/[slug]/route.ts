@@ -7,26 +7,28 @@ import TurndownService from 'turndown'
 
 export async function GET(
   request: Request,
-  context: any
+  context: { params: Promise<{ slug: string }> }
 ) {
   try {
-    const post = await getPostBySlug(context.params.slug)
+    const { slug } = await context.params
+    const post = await getPostBySlug(slug)
     if (!post) {
       return NextResponse.json({ message: 'Post not found' }, { status: 404 })
     }
     return NextResponse.json(post)
-  } catch (error) {
-    console.error('Error fetching post:', error)
+  } catch {
+    console.error('Error fetching post:')
     return NextResponse.json({ message: 'Internal server error' }, { status: 500 })
   }
 }
 
 export async function PUT(
   request: Request,
-  context: any
+  context: { params: Promise<{ slug: string }> }
 ) {
   try {
     const { title, author, content } = await request.json()
+    const { slug } = await context.params
 
     // 1. Validate input
     if (!title || !author || !content) {
@@ -43,7 +45,7 @@ export async function PUT(
     const markdownContent = turndownService.turndown(content)
 
     // 2. Generate filename and path
-    const fileName = `${context.params.slug}.mdx`
+    const fileName = `${slug}.mdx`
     const postsDirectory = path.join(process.cwd(), 'content', 'posts')
     const filePath = path.join(postsDirectory, fileName)
 
@@ -56,7 +58,6 @@ export async function PUT(
 
     // 3. Construct MDX content with frontmatter
     const date = new Date().toISOString().split('T')[0] // YYYY-MM-DD
-    const authorName = authors[author].name
 
     const mdxContent = `---
 title: "${title}"
@@ -71,9 +72,9 @@ ${markdownContent}
     // 4. Write the MDX content to the file
     await fs.writeFile(filePath, mdxContent, 'utf8')
 
-    return NextResponse.json({ message: 'Post updated successfully', slug: context.params.slug }, { status: 200 })
-  } catch (error) {
-    console.error('Error updating post:', error)
+    return NextResponse.json({ message: 'Post updated successfully', slug: slug }, { status: 200 })
+  } catch {
+    console.error('Error updating post:')
     return NextResponse.json({ message: 'Internal server error' }, { status: 500 })
   }
 }

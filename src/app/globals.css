@@ -1,13 +1,80 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
+/* Dark class variant */
 @custom-variant dark (&:is(.dark *));
 
-body {
-  font-family: 'Satoshi', sans-serif;
+:root {
+  --radius: 0.625rem;
+
+  /* LIGHT MODE — Pure grayscale */
+  --background: rgb(255, 255, 255);
+  --foreground: rgb(12, 12, 12);
+
+  --card: rgb(255, 255, 255);
+  --card-foreground: rgb(12, 12, 12);
+
+  --popover: rgb(255, 255, 255);
+  --popover-foreground: rgb(12, 12, 12);
+
+  --primary: rgb(28, 28, 28);
+  --primary-foreground: rgb(250, 250, 250);
+
+  --secondary: rgb(244, 244, 244);
+  --secondary-foreground: rgb(28, 28, 28);
+
+  --muted: rgb(244, 244, 244);
+  --muted-foreground: rgb(92, 92, 92);
+
+  --accent: rgb(238, 238, 238);
+  --accent-foreground: rgb(28, 28, 28);
+
+  --destructive: rgb(48, 48, 48);
+
+  --border: oklch(0.6 0 0 / 0.9);
+
+  /* INPUT background slightly lighter for better border contrast */
+  --input: oklch(0.93 0 0);
+
+  --ring: rgb(28, 28, 28);
 }
 
-/* Tailwind Theme Tokens Mapped to CSS Vars */
+.dark {
+  color-scheme: dark;
+
+  /* DARK MODE — Pure grayscale */
+  --background: rgb(6, 6, 6);
+  --foreground: rgb(245, 245, 245);
+
+  --card: rgb(14, 14, 14);
+  --card-foreground: rgb(245, 245, 245);
+
+  --popover: rgb(14, 14, 14);
+  --popover-foreground: rgb(245, 245, 245);
+
+  --primary: rgb(234, 234, 234);
+  --primary-foreground: rgb(10, 10, 10);
+
+  --secondary: rgb(22, 22, 22);
+  --secondary-foreground: rgb(234, 234, 234);
+
+  --muted: rgb(22, 22, 22);
+  --muted-foreground: rgb(168, 168, 168);
+
+  --accent: rgb(26, 26, 26);
+  --accent-foreground: rgb(234, 234, 234);
+
+  --destructive: rgb(60, 60, 60);
+
+  --border: oklch(0.5 0.01 255 / 0.9);
+
+  /* DARK MODE input slightly darker to show border clearly */
+  --input: oklch(0.18 0.01 255);
+
+  --ring: rgb(234, 234, 234);
+}
+
+/* Token mapping */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -44,75 +111,94 @@ body {
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-/* LIGHT MODE (OKLCH, balanced contrast) */
-:root {
-  --radius: 0.5rem;
-
-  --background: oklch(0.97 0 0);
-  --foreground: oklch(0.22 0 0);
-
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.22 0 0);
-
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.22 0 0);
-
-  --primary: oklch(0.55 0.03 255);
-  --primary-foreground: oklch(0.98 0 0);
-
-  --secondary: oklch(0.87 0.01 255);
-  --secondary-foreground: oklch(0.22 0 0);
-
-  --muted: oklch(0.88 0.01 255);
-  --muted-foreground: oklch(0.45 0.01 255);
-
-  --accent: oklch(0.88 0.01 255);
-  --accent-foreground: oklch(0.22 0 0);
-
-  --destructive: oklch(0.56 0.19 29);
-  --border: oklch(0.80 0 0 / 0.35);
-  --input: oklch(0.88 0.01 255);
-  --ring: oklch(0.55 0.03 255);
-}
-
-/* DARK MODE (fixed contrast, smoother scale, WCAG safe) */
-.dark {
-  color-scheme: dark;
-
-  --background: oklch(0.18 0 0);
-  --foreground: oklch(0.96 0 0);
-
-  --card: oklch(0.14 0 0);
-  --card-foreground: oklch(0.96 0 0);
-
-  --popover: oklch(0.16 0 0);
-  --popover-foreground: oklch(0.96 0 0);
-
-  --primary: oklch(0.72 0.04 255);
-  --primary-foreground: oklch(0.14 0 0);
-
-  --secondary: oklch(0.28 0.01 255);
-  --secondary-foreground: oklch(0.93 0 0);
-
-  --muted: oklch(0.26 0.01 255);
-  --muted-foreground: oklch(0.78 0.01 255);
-
-  --accent: oklch(0.30 0.02 255);
-  --accent-foreground: oklch(0.94 0 0);
-
-  --destructive: oklch(0.62 0.20 28);
-
-  --border: oklch(0.34 0.01 255 / 0.55);
-  --input: oklch(0.22 0.01 255);
-  --ring: oklch(0.72 0.04 255);
-}
-
-/* Base Tailwind Layer */
+/* Base layer */
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-background text-foreground;
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
+
+  body {
+    font-family: 'Satoshi', ui-sans-serif, system-ui;
+    @apply bg-background text-foreground;
+    line-height: 1.65;
+    letter-spacing: 0.01em;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--foreground);
+  }
+  a:hover {
+    opacity: 0.85;
+  }
+
+  /* INPUTS: Increased border visibility */
+  input,
+  textarea,
+  select {
+    @apply text-foreground rounded-lg bg-input;
+    border: 2.25px solid var(--border);
+    transition: border-color 0.15s ease;
+  }
+
+  input:hover,
+  textarea:hover,
+  select:hover {
+    border-color: var(--foreground);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: pink;
+    color: var(--foreground);
+  }
+
+  h1, h2, h3 {
+    font-weight: 700;
+    line-height: 1.25;
+  }
+  h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  small,
+  .muted,
+  .text-muted-foreground {
+    color: var(--muted-foreground);
+  }
+
+  hr {
+    border: none;
+    height: 1px;
+    background: var(--border);
+  }
+}
+
+/* Buttons */
+.btn {
+  @apply border-border inline-flex items-center justify-center rounded-xl border px-4 py-2;
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+}
+.btn:hover {
+  background: var(--accent);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+.btn-primary:hover {
+  filter: brightness(0.9);
 }

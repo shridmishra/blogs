@@ -19,7 +19,6 @@ export default function SearchPage() {
     async function loadPosts() {
       const response = await fetch('/api/posts')
       const posts = await response.json()
-      setAllPosts(posts)
       setFuse(
         new Fuse(posts, {
           keys: ['title', 'excerpt', 'tags'],

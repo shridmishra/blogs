@@ -13,7 +13,7 @@ export async function GET() {
     description: 'A minimalist blog built with Next.js and Tailwind CSS.',
     site_url: site_url,
     feed_url: `${site_url}/rss.xml`,
-    image_url: `${site_url}/logo.png`, // TODO: Add a logo
+    image_url: `${site_url}/next.svg`, // TODO: Add a logo
     pubDate: new Date(),
     copyright: `All rights reserved ${new Date().getFullYear()}, Your Name`,
   };

@@ -1,5 +1,5 @@
 import { authors, Author } from '@/content/authors'
-import { getAllPosts, Post } from '@/lib/content'
+import { getAllPosts } from '@/lib/content'
 import { notFound } from 'next/navigation'
 import { PostCard } from '@/components/PostCard'
 import Image from 'next/image'
@@ -16,7 +16,8 @@ export async function generateStaticParams() {
   }))
 }
 
-export async function generateMetadata({ params }: AuthorPageProps) {
+export async function generateMetadata({ params: awaitedParams }: AuthorPageProps) {
+  const params = await awaitedParams
   const author = authors[params.handle]
   if (!author) {
     notFound()
@@ -52,7 +53,8 @@ function AuthorAvatar({ author }: { author: Author }) {
     )
 }
 
-export default async function AuthorPage({ params }: AuthorPageProps) {
+export default async function AuthorPage({ params: awaitedParams }: AuthorPageProps) {
+  const params = await awaitedParams
   const author = authors[params.handle]
   if (!author) {
     notFound()

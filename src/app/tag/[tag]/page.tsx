@@ -1,4 +1,4 @@
-import { getAllPosts, Post } from '@/lib/content'
+import { getAllPosts } from '@/lib/content'
 import { PostCard } from '@/components/PostCard'
 import { notFound } from 'next/navigation'
 
