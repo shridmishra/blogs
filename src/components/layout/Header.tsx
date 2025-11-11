@@ -10,6 +10,12 @@ export function Header() {
           Blogs
         </Link>
         <nav className="flex items-center space-x-4">
+          <Link href="/authors" className="text-sm font-medium transition-colors hover:text-primary hidden sm:block">
+            Authors
+          </Link>
+          <Link href="/post/new" className="text-sm font-medium transition-colors hover:text-primary hidden sm:block">
+            New Post
+          </Link>
           <Link href="/search">
             <Search className="h-6 w-6" />
           </Link>

@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { promises as fs } from 'fs'
 import path from 'path'
 import { authors } from '@/content/authors' // Import authors for validation
+import TurndownService from 'turndown'
 
 export async function POST(request: Request) {
   try {
@@ -30,6 +31,10 @@ export async function POST(request: Request) {
       // File does not exist, which is good, continue to create
     }
 
+    // Convert HTML content to Markdown
+    const turndownService = new TurndownService()
+    const markdownContent = turndownService.turndown(content)
+
     // 3. Construct MDX content with frontmatter
     const date = new Date().toISOString().split('T')[0] // YYYY-MM-DD
     const authorName = authors[author].name
@@ -38,10 +43,10 @@ export async function POST(request: Request) {
 title: "${title}"
 date: "${date}"
 author: "${author}"
-excerpt: "${content.substring(0, 150)}..."
+excerpt: "${markdownContent.substring(0, 150)}..."
 ---
 
-${content}
+${markdownContent}
 `
 
     // 4. Write the MDX content to a new file

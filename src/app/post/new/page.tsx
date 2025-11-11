@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
+import RichTextEditor from '@/components/ui/RichTextEditor'
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -19,10 +20,18 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 import { useState } from 'react'
+import { authors } from '@/content/authors'
 
 const formSchema = z.object({
   title: z.string().min(1, { message: 'Title is required.' }),
@@ -120,10 +129,21 @@ export default function NewPostPage() {
                 name="author"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Author Handle</FormLabel>
-                    <FormControl>
-                      <Input type="text" {...field} />
-                    </FormControl>
+                    <FormLabel>Author</FormLabel>
+                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select an author" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {Object.values(authors).map((author) => (
+                          <SelectItem key={author.handle} value={author.handle}>
+                            {author.name}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -133,9 +153,12 @@ export default function NewPostPage() {
                 name="content"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Content (MDX)</FormLabel>
+                    <FormLabel>Content</FormLabel>
                     <FormControl>
-                      <Textarea rows={15} {...field} />
+                      <RichTextEditor
+                        content={field.value}
+                        onChange={field.onChange}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
